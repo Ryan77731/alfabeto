@@ -4,15 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alfabeto Temático para Crianças</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px 0;
+            color: #4caf50;
+        }
+        .alphabet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .letter-box {
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            width: 150px;
+            background-color: #fff;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        }
+        .letter-box img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .letter-box h3 {
+            margin: 10px 0 0;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Alfabeto Temático para Crianças</h1>
-    </header>
-    <main id="alphabet-list">
-        <!-- Aqui serão gerados os itens do alfabeto -->
-    </main>
-    <script src="scripts.js"></script>
+    <h1>Alfabeto Temático dos Animais</h1>
+    <div id="alphabet" class="alphabet-container"></div>
+
+    <script>
+        // Dados do alfabeto temático com URLs de imagens
+        const animals = {
+            'A': { name: 'Avestruz', img: 'https://www.w3schools.com/w3images/avestruz.jpg' },
+            'B': { name: 'Baleia', img: 'https://www.w3schools.com/w3images/whale.jpg' },
+            'C': { name: 'Cachorro', img: 'https://www.w3schools.com/w3images/dog.jpg' },
+            'D': { name: 'Dromedário', img: 'https://www.w3schools.com/w3images/dromedary.jpg' },
+            'E': { name: 'Elefante', img: 'https://www.w3schools.com/w3images/elephant.jpg' },
+            'F': { name: 'Foca', img: 'https://www.w3schools.com/w3images/seal.jpg' },
+            'G': { name: 'Girafa', img: 'https://www.w3schools.com/w3images/giraffe.jpg' },
+            'H': { name: 'Hipopotamo', img: 'https://www.w3schools.com/w3images/hippo.jpg' },
+            'I': { name: 'Iguana', img: 'https://www.w3schools.com/w3images/iguana.jpg' },
+            'J': { name: 'Jacaré', img: 'https://www.w3schools.com/w3images/alligator.jpg' },
+            'K': { name: 'Kanguru', img: 'https://www.w3schools.com/w3images/kangaroo.jpg' },
+            'L': { name: 'Leão', img: 'https://www.w3schools.com/w3images/lion.jpg' },
+            'M': { name: 'Macaco', img: 'https://www.w3schools.com/w3images/monkey.jpg' },
+            'N': { name: 'Naja', img: 'https://www.w3schools.com/w3images/cobra.jpg' },
+            'O': { name: 'Ovelha', img: 'https://www.w3schools.com/w3images/sheep.jpg' },
+            'P': { name: 'Pinguim', img: 'https://www.w3schools.com/w3images/penguin.jpg' },
+            'Q': { name: 'Quati', img: 'https://www.w3schools.com/w3images/coati.jpg' },
+            'R': { name: 'Rinoceronte', img: 'https://www.w3schools.com/w3images/rhino.jpg' },
+            'S': { name: 'Sapo', img: 'https://www.w3schools.com/w3images/frog.jpg' },
+            'T': { name: 'Tigre', img: 'https://www.w3schools.com/w3images/tiger.jpg' },
+            'U': { name: 'Urso', img: 'https://www.w3schools.com/w3images/bear.jpg' },
+            'V': { name: 'Vaca', img: 'https://www.w3schools.com/w3images/cow.jpg' },
+            'W': { name: 'Wolverine', img: 'https://www.w3schools.com/w3images/wolverine.jpg' },
+            'X': { name: 'Xaxim', img: 'https://www.w3schools.com/w3images/xaxim.jpg' }, // Imagem genérica de planta
+            'Y': { name: 'Yak', img: 'https://www.w3schools.com/w3images/yak.jpg' },
+            'Z': { name: 'Zebra', img: 'https://www.w3schools.com/w3images/zebra.jpg' }
+        };
+
+        // Função para criar o alfabeto na página
+        function createAlphabet() {
+            const alphabetContainer = document.getElementById('alphabet');
+            for (let letter in animals) {
+                const animal = animals[letter];
+                const letterBox = document.createElement('div');
+                letterBox.className = 'letter-box';
+                
+                const image = document.createElement('img');
+                image.src = animal.img;
+                image.alt = animal.name;
+                
+                const title = document.createElement('h3');
+                title.textContent = animal.name;
+
+                letterBox.appendChild(image);
+                letterBox.appendChild(title);
+                
+                alphabetContainer.appendChild(letterBox);
+            }
+        }
+
+        // Cria o alfabeto quando a página carrega
+        window.onload = createAlphabet;
+    </script>
 </body>
 </html>
